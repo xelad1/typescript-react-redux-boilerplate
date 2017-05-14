@@ -10,7 +10,11 @@ export default class CalculatorDisplay extends Component {
 
   render() {
     return (
-      <div className="display"> {this.props.display.displayString} </div>
+      <div className="display">
+        <div className="displayText">
+          {this.props.display.displayString}
+        </div>
+      </div>
     )
   }
 

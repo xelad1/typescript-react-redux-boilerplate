@@ -1,10 +1,21 @@
-import React from 'react'
+import * as React from 'react'
 import PropTypes from 'prop-types'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Calculator from '../components/Calculator'
 import CalculatorDisplay from '../components/CalculatorDisplay'
 import * as CalculatorActions from '../actions'
+import { RouteComponentProps } from 'react-router'
+
+export namespace App {
+  export interface Props extends RouteComponentProps<void> {
+    actions: typeof CalculatorActions;
+  }
+
+  export interface State {
+    /* empty */
+  }
+}
 
 const App = ({todos, actions, display}) => (
   <div>
@@ -13,10 +24,10 @@ const App = ({todos, actions, display}) => (
   </div>
 )
 
-App.propTypes = {
-  todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-}
+// App.propTypes = {
+//   todos: PropTypes.array.isRequired,
+//   actions: PropTypes.object.isRequired
+// }
 
 const mapStateToProps = state => ({
   todos: state.todos,
@@ -24,7 +35,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-    actions: bindActionCreators(CalculatorActions, dispatch)
+    actions: bindActionCreators(CalculatorActions as any, dispatch)
 })
 
 export default connect(

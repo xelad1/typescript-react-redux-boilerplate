@@ -1,38 +1,54 @@
 .button {
   border-color: grey;
   border-width: .5px;
-  width: 60px;
+  width: 70px;
   height: 60px;
-  font-size: 15px;
+  font-size: 18px;
 }
 
 .buttonRight {
   border-color: grey;
   border-width: .5px;
-  width: 60px;
+  width: 70px;
   height: 60px;
   background-color: orange;
-  font-size: 15px;
+  font-size: 18px;
+  color: white;
 }
 
 .zero {
   border-color: black;
   border-width: .5px;
-  width: 120px;
+  width: 140px;
   height: 60px;
   border-bottom-left-radius: 5px;
-  font-size: 15px;
+  font-size: 18px;
+}
+
+.equals {
+  border-color: grey;
+  border-width: .5px;
+  width: 70px;
+  height: 60px;
+  background-color: orange;
+  border-bottom-right-radius: 5px;
+  font-size: 18px;
 }
 
 .display {
+  font-size: 50px;
   border-width: .5px;
   border-color: black;
-  width: 240px;
+  width: 280px;
   height: 120px;
   background-color: grey;
   color: white;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   text-align: right;
+}
 
+.displayText {
+  padding-top: 60px;
+  padding-right: 10px;
 }

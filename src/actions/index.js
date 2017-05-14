@@ -39,3 +39,7 @@ export function clear(index) {
 export function equals(index) {
   return { type: types.EQUALS, index }
 }
+
+export function percent(index) {
+  return { type: types.PERCENT, index }
+}

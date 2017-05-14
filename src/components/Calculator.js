@@ -1,20 +1,18 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styles from '../styles.css'
-// import connect from 'react-redux'
-
-// todo: abstract away button into smaller components
 
 export default class Calculator extends Component {
 
   render() {
+    console.log('this.props', this.props);
     return (
       <div>
         <div>
-          <button className="button" style={styles.button} onClick={ () => { this.props.actions.clear('AC'); } }><div>AC</div></button>
-          <button className="button" style={styles.button} onClick={ () => { this.props.actions.negativepositive('+/-'); } }><div>+/-</div></button>
+          <button className="button" onClick={ () => { this.props.actions.clear('AC'); } }><div>AC</div></button>
+          <button className="button" onClick={ () => { this.props.actions.negativepositive('+/-'); } }><div>+/-</div></button>
           <button className="button" style={styles.button} onClick={ () => { this.props.actions.percent('%'); } }><div>%</div></button>
-          <button className="buttonRight" style={styles.buttonRight} onClick={ () => { this.props.actions.divide('divide'); } }><div>divide</div></button>
+          <button className="buttonRight" style={styles.buttonRight} onClick={ () => { this.props.actions.divide('/'); } }><div>/</div></button>
         </div>
         <div>
           <button className="button" style={styles.button} onClick={ () => { this.props.actions.addNumber(7); } }><div>7</div></button>
@@ -37,7 +35,7 @@ export default class Calculator extends Component {
         <div>
           <button className="zero" style={styles.zero} onClick={ () => { this.props.actions.addNumber(0); } }><div>0</div></button>
           <button className="button" style={styles.button} onClick={ () => { this.props.actions.addNumber('.'); } }><div>.</div></button>
-          <button className="buttonRight" style={styles.buttonRight} onClick={ () => { this.props.actions.equals('='); } }><div>=</div></button>
+          <button className="equals" style={styles.equals} onClick={ () => { this.props.actions.equals('='); } }><div>=</div></button>
         </div>
       </div>
     )
