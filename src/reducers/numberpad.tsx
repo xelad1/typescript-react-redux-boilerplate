@@ -2,6 +2,7 @@ import {
   ADD_NUMBER,
   ADD,
   SUBTRACT,
+  MATH,
   MULTIPLY,
   DIVIDE,
   NEGATIVEPOSITIVE,
@@ -18,79 +19,66 @@ const initialState = {
   total: 0,
   entries: [],
   decimal: false,
+  arithmeticOperator: false,
 }
+
+// Type checking here is throwing an error despite passing the type, needs a refactor
 
 export default function counter(state = initialState, action : Actions ) {
   switch(action.type) {
     case ADD_NUMBER:
-      console.log('action inside of ADD_NUMBER reducer', action.val);
+      debugger;
+      let lastEntry = state.entries[state.entries.length - 1];
+      // debugger;
       let displayString = state.displayString;
       if (action.val === '.') {
         state.decimal = true;
       }
 
+      console.log('state.entries', state.entries[state.entries.length - 1]);
+
       if (displayString[displayString.length - 3] === '.') {
-        // todo: develop error handler here to let user know they can't add
+        // TODO: develop error handler here to let user know they can't add
         // anymore numbers
+
+        // TODO: update conditional to not rely on last entry
         return state;
+      } else if (state.arithmeticOperator === true) {
+        return {
+          ...state,
+          displayString: "" + action.val,
+          arithmeticOperator: false,
+        }
       } else {
         return {
           ...state,
           displayString: displayString + action.val,
       }
     }
-    case ADD:
-      console.log('action inside of ADD reducer', action);
-      let tempArrayAdd = state.entries;
-      let tempAddDisplay = state.displayString;
+    case MATH:
+      let tempArrayMath = state.entries.slice(0);
+      let tempMathDisplay = state.displayString;
 
-      tempArrayAdd.push(tempAddDisplay);
-      tempArrayAdd.push('+');
+      console.log('tempMathDisplay', action.symbol);
 
-      return {
-        ...state,
-        entries: tempArrayAdd,
-    }
-    case SUBTRACT:
-      let tempArraySubtract = state.entries;
-      let tempSubtractDisplay = state.displayString;
-
-      tempArraySubtract.push(tempSubtractDisplay);
-      tempArraySubtract.push('-');
+      if (tempArrayMath[state.entries.length - 1] !== "+" || "-" || "/" || "*") {
+        tempArrayMath.push(tempMathDisplay);
+        tempArrayMath.push(action.symbol);
+      }
 
       return {
         ...state,
-        entries: tempArraySubtract,
-    }
-    case MULTIPLY:
-      let tempArrayMultiply = state.entries;
-      let tempMultiplyDisplay = state.displayString;
-
-      tempArrayMultiply.push(tempMultiplyDisplay);
-      tempArrayMultiply.push('*');
-
-      return {
-        ...state,
-        entries: tempArrayMultiply,
-    }
-    case DIVIDE:
-      let tempArrayDivide = state.entries;
-      let tempDivideDisplay = state.displayString;
-
-      tempArrayDivide.push(tempDivideDisplay);
-      tempArrayDivide.push('/');
-
-      return {
-        ...state,
-        entries: tempArrayDivide,
+        arithmeticOperator: true,
+        entries: tempArrayMath,
     }
     case EQUALS:
       let tempArrayEquals = state.entries;
       tempArrayEquals.push(state.displayString);
 
-      let nt = Number(tempArrayEquals[0])
+      let nt = Number(tempArrayEquals[0]);
 
       for (let i = 0; i < tempArrayEquals.length; i ++) {
+        // debugger;
         let next = Number(tempArrayEquals[i + 1]);
 
         if (tempArrayEquals[i] === '+') {
@@ -102,9 +90,9 @@ export default function counter(state = initialState, action : Actions ) {
         } else if (tempArrayEquals[i] === '/') {
           nt /= next;
         }
-
-        i++;
       }
+
+      console.log('total at the end', nt);
 
       return {
         ...state,

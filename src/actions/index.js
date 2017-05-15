@@ -12,22 +12,6 @@ export function addNumberRow(index) {
   return { type: types.ADD_NUMBER_ROW, index }
 }
 
-export function add(symbol) {
-  return { type: types.ADD, symbol }
-}
-
-export function subtract(symbol) {
-  return { type: types.SUBTRACT, symbol }
-}
-
-export function multiply(symbol) {
-  return { type: types.MULTIPLY, symbol }
-}
-
-export function divide(symbol) {
-  return { type: types.DIVIDE, symbol }
-}
-
 export function negativepositive(index) {
   return { type: types.NEGATIVEPOSITIVE, index }
 }
@@ -42,4 +26,8 @@ export function equals(index) {
 
 export function percent(index) {
   return { type: types.PERCENT, index }
+}
+
+export function math(symbol) {
+  return { type: types.MATH, symbol }
 }
