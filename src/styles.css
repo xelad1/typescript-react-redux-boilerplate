@@ -28,6 +28,7 @@
 .equals {
   border-color: grey;
   border-width: .5px;
+  color: white;
   width: 70px;
   height: 60px;
   background-color: orange;

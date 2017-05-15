@@ -8,6 +8,7 @@ import {
   NEGATIVEPOSITIVE,
   CLEAR,
   EQUALS,
+  PERCENT,
 } from '../constants/ActionTypes';
 
 import * as Actions from '../actions/index.js';
@@ -20,6 +21,7 @@ const initialState = {
   entries: [],
   decimal: false,
   arithmeticOperator: false,
+  timesPercentPressed: 2,
 }
 
 // Type checking here is throwing an error despite passing the type, needs a refactor
@@ -27,15 +29,12 @@ const initialState = {
 export default function counter(state = initialState, action : Actions ) {
   switch(action.type) {
     case ADD_NUMBER:
-      debugger;
       let lastEntry = state.entries[state.entries.length - 1];
       // debugger;
       let displayString = state.displayString;
       if (action.val === '.') {
         state.decimal = true;
       }
-
-      console.log('state.entries', state.entries[state.entries.length - 1]);
 
       if (displayString[displayString.length - 3] === '.') {
         // TODO: develop error handler here to let user know they can't add
@@ -48,6 +47,7 @@ export default function counter(state = initialState, action : Actions ) {
           ...state,
           displayString: "" + action.val,
           arithmeticOperator: false,
+          timesPercentPressed: 2,
         }
       } else {
         return {
@@ -58,8 +58,6 @@ export default function counter(state = initialState, action : Actions ) {
     case MATH:
       let tempArrayMath = state.entries.slice(0);
       let tempMathDisplay = state.displayString;
-
-      console.log('tempMathDisplay', action.symbol);
 
       if (tempArrayMath[state.entries.length - 1] !== "+" || "-" || "/" || "*") {
         tempArrayMath.push(tempMathDisplay);
@@ -78,7 +76,6 @@ export default function counter(state = initialState, action : Actions ) {
       let nt = Number(tempArrayEquals[0]);
 
       for (let i = 0; i < tempArrayEquals.length; i ++) {
-        // debugger;
         let next = Number(tempArrayEquals[i + 1]);
 
         if (tempArrayEquals[i] === '+') {
@@ -92,8 +89,6 @@ export default function counter(state = initialState, action : Actions ) {
         }
       }
 
-      console.log('total at the end', nt);
-
       return {
         ...state,
         displayString: nt + "",
@@ -101,8 +96,13 @@ export default function counter(state = initialState, action : Actions ) {
         entries: tempArrayEquals,
     }
     case NEGATIVEPOSITIVE:
+
+      let switchedSign = Number(state.displayString) * -1;
+
       return {
         ...state,
+        total: state.total * -1,
+        displayString: switchedSign + "",
     }
     case CLEAR:
       return {
@@ -111,6 +111,15 @@ export default function counter(state = initialState, action : Actions ) {
         total: 0,
         entries: [],
         decimal: false,
+        timesPercentPressed: 2,
+    }
+    case PERCENT:
+      let numberConvertedToPercent = (Number(state.displayString) * .1).toFixed(state.timesPercentPressed);
+
+      return {
+        ...state,
+        displayString: numberConvertedToPercent + "",
+        timesPercentPressed: state.timesPercentPressed += 1,
     }
     default:
       return state;

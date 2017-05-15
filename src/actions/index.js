@@ -12,8 +12,8 @@ export function addNumberRow(index) {
   return { type: types.ADD_NUMBER_ROW, index }
 }
 
-export function negativepositive(index) {
-  return { type: types.NEGATIVEPOSITIVE, index }
+export function negativepositive(sign) {
+  return { type: types.NEGATIVEPOSITIVE, sign }
 }
 
 export function clear(index) {
