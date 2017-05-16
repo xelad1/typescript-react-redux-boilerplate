@@ -13,8 +13,6 @@ import {
 
 import * as Actions from '../actions/index.js';
 
-console.log('Actions', Actions);
-
 const initialState = {
   displayString: '0',
   total: 0,
@@ -56,10 +54,15 @@ export default function counter(state = initialState, action : Actions ) {
       }
     }
     case MATH:
+      debugger;
       let tempArrayMath = state.entries.slice(0);
       let tempMathDisplay = state.displayString;
+      let lastItem = tempArrayMath[tempArrayMath.length - 1]
 
-      if (tempArrayMath[state.entries.length - 1] !== "+" || "-" || "/" || "*") {
+      if (lastItem !== "+" &&
+          lastItem !== "-" &&
+          lastItem !== "/" &&
+          lastItem !== "*") {
         tempArrayMath.push(tempMathDisplay);
         tempArrayMath.push(action.symbol);
       }

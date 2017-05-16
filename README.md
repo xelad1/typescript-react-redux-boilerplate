@@ -1,5 +1,4 @@
-# React Redux Typescript Webpack Calculator Example
+# React Redux Typescript Webpack Calculator Example / Boilerplate
+npm install
 
-Resources / Repos cited while building this:
-- Create-React-App
-- Redux TodoMVC
+To start application run npm start
