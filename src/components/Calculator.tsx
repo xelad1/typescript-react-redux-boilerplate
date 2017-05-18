@@ -1,7 +1,7 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import * as CalculatorActions from '../actions/index'
-// import { styles } from '../styles.css'
+// import { styles } from '../styles.scss';
 
 export namespace Calculator {
   export interface Props {
@@ -14,6 +14,8 @@ export namespace Calculator {
 }
 
 export default class Calculator extends React.Component<Calculator.Props, Calculator.State> {
+
+  const styles = require('../styles.scss');
 
   render() {
     return (

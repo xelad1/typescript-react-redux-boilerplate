@@ -17,7 +17,6 @@ const initialState = {
 };
 
 export default function counter(state = initialState, action = {}) {
-  console.log('state inside counter behind current', state);
   switch(action.type) {
     case ADD_NUMBER:
       let displayString = state.displayString;

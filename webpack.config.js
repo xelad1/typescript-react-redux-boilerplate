@@ -46,24 +46,14 @@ module.exports = {
       },
       // css
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            {
-              loader: 'css-loader',
-              query: {
-                modules: true,
-                sourceMap: !isProduction,
-                importLoaders: 1,
-                localIdentName: '[local]__[hash:base64:5]'
-              }
-            },
-            {
-              loader: 'postcss-loader'
-            }
-          ]
-        })
+        test: /\.scss$/,
+        use: [{
+                loader: "style-loader" // creates style nodes from JS strings
+            }, {
+                loader: "css-loader" // translates CSS into CommonJS
+            }, {
+                loader: "sass-loader" // compiles Sass to CSS
+            }]
       },
       // static assets
       { test: /\.html$/, use: 'html-loader' },
@@ -91,7 +81,7 @@ module.exports = {
     }),
     new webpack.optimize.AggressiveMergingPlugin(),
     new ExtractTextPlugin({
-      filename: 'styles.css',
+      filename: 'styles.scss',
       disable: !isProduction
     }),
     new HtmlWebpackPlugin({

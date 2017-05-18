@@ -22,7 +22,7 @@ const initialState = {
   timesPercentPressed: 2,
 }
 
-// Type checking here is throwing an error despite passing the type, needs a refactor
+// TODO: Type checking here is throwing an error despite passing the type, needs a refactor
 
 export default function counter(state = initialState, action : Actions ) {
   switch(action.type) {
@@ -30,14 +30,15 @@ export default function counter(state = initialState, action : Actions ) {
       let lastEntry = state.entries[state.entries.length - 1];
       // debugger;
       let displayString = state.displayString;
-      if (action.val === '.') {
+
+      if (action.val === '.'  && state.decimal) {
         state.decimal = true;
+      } else {
+        state.decimal = false;
       }
 
-      if (displayString[displayString.length - 3] === '.') {
-        // TODO: develop error handler here to let user know they can't add
-        // anymore numbers
 
+      if (displayString[displayString.length - 3] === '.') {
         // TODO: update conditional to not rely on last entry
         return state;
       } else if (state.arithmeticOperator === true) {
@@ -47,14 +48,19 @@ export default function counter(state = initialState, action : Actions ) {
           arithmeticOperator: false,
           timesPercentPressed: 2,
         }
+        // TODO: fix this so that 0 does not append to the first string of letters
+      // } else if (state.displayString.length === 1 && state.displayString === "0") {
+      //   return {
+      //     ...state,
+      //     dipslayString: "" + action.val,
+      //   }
       } else {
         return {
           ...state,
           displayString: displayString + action.val,
-      }
+        }
     }
     case MATH:
-      debugger;
       let tempArrayMath = state.entries.slice(0);
       let tempMathDisplay = state.displayString;
       let lastItem = tempArrayMath[tempArrayMath.length - 1]

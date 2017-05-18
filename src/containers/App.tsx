@@ -24,11 +24,6 @@ const App = ({todos, actions, display}) => (
   </div>
 )
 
-// App.propTypes = {
-//   todos: PropTypes.array.isRequired,
-//   actions: PropTypes.object.isRequired
-// }
-
 const mapStateToProps = state => ({
   todos: state.todos,
   display: state.numberpad
