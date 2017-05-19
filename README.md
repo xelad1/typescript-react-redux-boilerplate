@@ -17,7 +17,7 @@ This application should serve as a boilerplate example of how these technologies
 
 Typescript (as integrated) should compile regular Javascript but throw errors when type checking is not properly enforced.
 
-# Typescript 2 Migration Notes, helpful resources:
+# Typescript 2 Migration Notes, and Helpful Resources
 
 Migrating from JS to TS 2 with Webpack etc:
 

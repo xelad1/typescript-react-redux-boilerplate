@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import initialState from '../reducers/numberpad';
-// import styles from '../styles.css'
 
 export namespace CalculatorDisplay {
   export interface Props {

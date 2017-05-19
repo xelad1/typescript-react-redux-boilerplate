@@ -47,11 +47,11 @@ export default function counter(state = initialState, action: Action) {
           timesPercentPressed: 2,
         }
         // TODO: fix this so that 0 does not append to the first string of letters
-      // } else if (state.displayString.length === 1 && state.displayString === "0") {
-      //   return {
-      //     ...state,
-      //     dipslayString: "" + action.val,
-      //   }
+      } else if (state.displayString.length === 1 && state.displayString === "0") {
+        return {
+          ...state,
+          displayString: "" + action.val,
+        }
       } else {
         return {
           ...state,
