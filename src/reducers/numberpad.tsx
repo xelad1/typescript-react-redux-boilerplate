@@ -11,7 +11,7 @@ import {
   PERCENT,
 } from '../constants/ActionTypes';
 
-import * as Actions from '../actions/index.js';
+import { Action } from '../actions/index.js';
 
 const initialState = {
   displayString: '0',
@@ -24,11 +24,10 @@ const initialState = {
 
 // TODO: Type checking here is throwing an error despite passing the type, needs a refactor
 
-export default function counter(state = initialState, action : Actions ) {
+export default function counter(state = initialState, action: Action) {
   switch(action.type) {
     case ADD_NUMBER:
       let lastEntry = state.entries[state.entries.length - 1];
-      // debugger;
       let displayString = state.displayString;
 
       if (action.val === '.'  && state.decimal) {
@@ -36,7 +35,6 @@ export default function counter(state = initialState, action : Actions ) {
       } else {
         state.decimal = false;
       }
-
 
       if (displayString[displayString.length - 3] === '.') {
         // TODO: update conditional to not rely on last entry
@@ -105,7 +103,6 @@ export default function counter(state = initialState, action : Actions ) {
         entries: tempArrayEquals,
     }
     case NEGATIVEPOSITIVE:
-
       let switchedSign = Number(state.displayString) * -1;
 
       return {

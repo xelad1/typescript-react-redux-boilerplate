@@ -1,4 +1,3 @@
-export const NAME = 'numberpad'
 export const ADD_NUMBER = 'ADD_NUMBER'
 export const DELETE_NUMBER = 'WHEEEEE'
 export const ADD_NUMBER_ROW = 'ADD_NUMBER_ROW'

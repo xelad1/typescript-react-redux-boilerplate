@@ -16,7 +16,7 @@ const initialState = {
   decimal: false,
 };
 
-export default function counter(state = initialState, action = {}) {
+export default function counter(state = initialState, action) {
   switch(action.type) {
     case ADD_NUMBER:
       let displayString = state.displayString;

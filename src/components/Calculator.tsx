@@ -13,9 +13,10 @@ export namespace Calculator {
   }
 }
 
+let styles = require('../styles.scss');
+
 export default class Calculator extends React.Component<Calculator.Props, Calculator.State> {
 
-  const styles = require('../styles.scss');
 
   render() {
     return (
