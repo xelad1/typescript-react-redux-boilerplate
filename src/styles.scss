@@ -1,3 +1,8 @@
+$defaultGrey: #e0e0e0;
+$darkGrey: #d6d6d6;
+$calculatorOrange: #f79231;
+$displayColor: #999999;
+
 .button {
   border-color: grey;
   border-width: .5px;
@@ -6,47 +11,48 @@
   font-size: 18px;
 }
 
+.buttonMain {
+  @extend .button;
+  background-color: $defaultGrey;
+}
+
 .buttonRight {
-  border-color: grey;
-  border-width: .5px;
-  width: 70px;
-  height: 60px;
-  background-color: orange;
-  font-size: 18px;
+  @extend .button;
+  background-color: $calculatorOrange;
   color: white;
+}
+
+.buttonTopRow {
+  @extend .button;
+  background-color: $darkGrey;
 }
 
 .zero {
-  border-color: black;
-  border-width: .5px;
+  @extend .button;
+  background-color: $defaultGrey;
   width: 140px;
-  height: 60px;
   border-bottom-left-radius: 5px;
-  font-size: 18px;
 }
 
 .equals {
-  border-color: grey;
-  border-width: .5px;
-  color: white;
-  width: 70px;
-  height: 60px;
-  background-color: orange;
+  @extend .button;
+  background-color: $calculatorOrange;
   border-bottom-right-radius: 5px;
-  font-size: 18px;
+  color: white;
 }
 
 .display {
-  font-size: 50px;
-  border-width: .5px;
+  background-color: $displayColor;
   border-color: black;
-  width: 280px;
-  height: 120px;
-  background-color: grey;
-  color: white;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
+  border-width: .5px;
+  color: white;
+  font-size: 50px;
+  height: 120px;
+  opacity: .75;
   text-align: right;
+  width: 280px;
 }
 
 .displayText {

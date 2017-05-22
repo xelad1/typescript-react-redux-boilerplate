@@ -22,8 +22,6 @@ const initialState = {
   timesPercentPressed: 2,
 }
 
-// TODO: Type checking here is throwing an error despite passing the type, needs a refactor
-
 export default function counter(state = initialState, action: Action) {
   switch(action.type) {
     case ADD_NUMBER:
@@ -46,7 +44,6 @@ export default function counter(state = initialState, action: Action) {
           arithmeticOperator: false,
           timesPercentPressed: 2,
         }
-        // TODO: fix this so that 0 does not append to the first string of letters
       } else if (state.displayString.length === 1 && state.displayString === "0") {
         return {
           ...state,

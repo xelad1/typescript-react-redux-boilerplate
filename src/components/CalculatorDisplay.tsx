@@ -4,7 +4,8 @@ import initialState from '../reducers/numberpad';
 
 export namespace CalculatorDisplay {
   export interface Props {
-    display: any,
+    display: object,
+    calculatorDisplay: string,
   }
 
   export interface State {
@@ -16,10 +17,12 @@ export namespace CalculatorDisplay {
 export default class CalculatorDisplay extends React.Component<CalculatorDisplay.Props, CalculatorDisplay.State> {
 
   render() {
+
+    let calculatorDisplay = this.props.display.displayString;
     return (
       <div className="display">
         <div className="displayText">
-          { this.props.display.displayString }
+          { calculatorDisplay }
         </div>
       </div>
     )
