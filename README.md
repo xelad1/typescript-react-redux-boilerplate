@@ -10,6 +10,7 @@ Run `npm start`
 - Redux
 - Typescript 2
 - Webpack 2
+- Sass
 
 # Purpose
 
