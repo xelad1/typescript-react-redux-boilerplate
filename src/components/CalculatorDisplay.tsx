@@ -4,8 +4,9 @@ import initialState from '../reducers/numberpad';
 
 export namespace CalculatorDisplay {
   export interface Props {
-    display: object,
-    calculatorDisplay: string,
+    display: {
+      displayString: string,
+    }
   }
 
   export interface State {
@@ -13,11 +14,9 @@ export namespace CalculatorDisplay {
   }
 }
 
-// TODO: How do we get displayString to be properly recognized in props validation?
 export default class CalculatorDisplay extends React.Component<CalculatorDisplay.Props, CalculatorDisplay.State> {
 
   render() {
-
     let calculatorDisplay = this.props.display.displayString;
     return (
       <div className="display">

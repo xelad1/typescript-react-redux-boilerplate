@@ -18,14 +18,16 @@ This application should serve as a boilerplate example of how these technologies
 Typescript (as integrated) should compile regular Javascript but throw errors when type checking is not properly enforced.
 
 # Typescript 2 Migration Notes, and Helpful Resources
+Writing interfaces for React components in Typescript:
+
+Typescript JSX parameters (for type checking on React components):
+
+https://www.typescriptlang.org/docs/handbook/jsx.html
 
 Migrating from JS to TS 2 with Webpack etc:
 
 https://www.typescriptlang.org/docs/handbook/migrating-from-javascript.html
 
-Typescript JSX parameters (for type checking on React components):
-
-https://www.typescriptlang.org/docs/handbook/jsx.html
 
 List of acceptable TS parameters:
 
