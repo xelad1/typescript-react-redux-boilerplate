@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import initialState from '../reducers/numberpad';
 
 export namespace CalculatorDisplay {
   export interface Props {
@@ -10,13 +9,13 @@ export namespace CalculatorDisplay {
   }
 
   export interface State {
-
+    // Empty
   }
 }
 
 export default class CalculatorDisplay extends React.Component<CalculatorDisplay.Props, CalculatorDisplay.State> {
-
   render() {
+    console.log('this', this);
     let calculatorDisplay = this.props.display.displayString;
     return (
       <div className="display">
@@ -26,5 +25,4 @@ export default class CalculatorDisplay extends React.Component<CalculatorDisplay
       </div>
     )
   }
-
 }

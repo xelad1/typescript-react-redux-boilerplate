@@ -1,11 +1,10 @@
 import * as React from 'react'
 import PropTypes from 'prop-types'
 import * as CalculatorActions from '../actions/index'
-// import { styles } from '../styles.scss';
 
 export namespace Calculator {
   export interface Props {
-    actions: typeof CalculatorActions;
+    actions: typeof CalculatorActions,
   }
 
   export interface State {

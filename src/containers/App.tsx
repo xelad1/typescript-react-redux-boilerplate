@@ -13,7 +13,7 @@ export namespace App {
   }
 
   export interface State {
-    /* empty */
+    // Empty
   }
 }
 
@@ -25,7 +25,6 @@ const App = ({todos, actions, display}) => (
 )
 
 const mapStateToProps = state => ({
-  todos: state.todos,
   display: state.numberpad
 })
 

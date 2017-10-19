@@ -11,7 +11,7 @@ import {
   PERCENT,
 } from '../constants/ActionTypes';
 
-import { Action } from '../actions/index.js';
+import { Action } from '../actions/index';
 
 const initialState = {
   displayString: '0',
@@ -25,17 +25,13 @@ const initialState = {
 export default function counter(state = initialState, action: Action) {
   switch(action.type) {
     case ADD_NUMBER:
+      // debugger;
       let lastEntry = state.entries[state.entries.length - 1];
       let displayString = state.displayString;
 
-      if (action.val === '.'  && state.decimal) {
-        state.decimal = true;
-      } else {
-        state.decimal = false;
-      }
-
       if (displayString[displayString.length - 3] === '.') {
         // TODO: update conditional to not rely on last entry
+        console.log('entries', state.entries);
         return state;
       } else if (state.arithmeticOperator === true) {
         return {
